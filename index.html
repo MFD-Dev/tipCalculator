@@ -6,3 +6,56 @@ Requirements:
 -The form should also let the user choose the percentage tip they want to give.
 -When they submit the form, show them the total with tip added.
 -Display the total tip amount as well so they know how much they're tipping. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+   
+
+    <div id="container">
+        <div id="calculator">
+            <h3 id="tip-calc"  >Tip Calculator</h3>
+             <br>
+             <p></p>
+        <label for="amount">Bill Amount</label>
+        <br>
+        <button><i class="fas fa-dollar-sign"></i></button><input id="amount" type="text">
+        <br>
+        <br>
+        <label for="guest">Number of Guests</label>
+        <br>
+        <button><i class="fas fa-male"></i></button><input id="guest" type="text">
+        <br>
+        <br>
+        <label for="Service Quality"></label>
+        <br>
+        <select id="quality">
+            <option disabled selected value ='0'>Choose</option>
+            <option value="0.3">30% - Outstanding</option>
+            <option value="0.3">20% - Good</option>
+            <option value="0.3">15% - OK</option>
+            <option value="0.3">10% - Bad</option>
+            <option value="0.3">5% - Not Good</option>
+        </select>   
+        </div>
+        <div style="text-align: center">
+            <p></p>
+            <button id="calc-btn" onclick="calculate()">Calculate</button>
+
+        </div>
+        <!-- Display tip amount -->
+        <div id="tip-amount" ></div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
