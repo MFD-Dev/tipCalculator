@@ -7,37 +7,80 @@
 // -When they submit the form, show them the total with tip added.
 // -Display the total tip amount as well so they know how much they're tipping.
 
+// const sliders = document.querySelectorAll("input[type='range");
+// console.log(sliders);
 
-// NEED TO CHANGE :  #ofGuest field to tip number-- convert that to percentage -- 
-// --showTipAmount is changed to total amount -- and displays tipAmt + mealAmt = total
+//Step 1. addEventListeners
+//Step 2. get Input Values
+//Step 3. calculate outPut values.
+//Step 4. display output values.
 
-// get access to 3 input boxes
+//1a.create a variable for the input range sliders
+const sliders = document.querySelectorAll("input[type='range']");
+ // should confirm a nodeList for 0-input#tip, 1-no-of-people
+//  console.log(sliders);
 
-const amount = document.getElementById('amount');
-const guest = document.getElementById('guest');
-const quality = document.getElementById('quality');
-const tipAmount = document.getElementById('tip-amount');
+ //1B. creating a event for the input field to run a function
+ sliders.forEach(function(slider){
+    slider.addEventListener("input", calculateTip);
+ });
+// 1d. 
+const billInput = document.getElementById("bill");
+billInput.addEventListener("change", calculateTip);
 
-calculate = () => {
-    const tip =  ((amount.value * quality.value) /(guest.value)).toFixed(2); //return 2 dec
-    //clear the fields
-    amount.value = '';
-    guest.value = '';
-    quality.value = '';
-    // checks for NaN
-    if(tip === 'NaN') {
-        tipAmount.innerHTML = 'Tip $0 each';
-        showTipAmount();
-    }
-    else {
-        tipAmount.innerHTML = 'Tip $' + tip + ' each';
-        showTipAmount();
-    }
+//1C. create funtion name;
+function calculateTip() {
+    //2a. create a variable to hold the value
+    let bill = parseFloat(billInput.value); // returns the value as a number
+    let tipPercent = document.getElementById("tip").value;
+    let noOfPeople = document.getElementById("no-of-people");
+
+
+    // // check the functionality of these
+    // console.log(bill, tipPercent, noOfPeople);
+    //2a.
+    billInput.value = bill.toFixed(2); //create a constraint on the input field
+    //3a.
+    let totalTip = parseFloat((bill * (tipPercent/100)).toFixed(2));
+    let total = parseFloat((bill + totalTip).toFixed(2));
+    // console.log(totalTip, tip);
+    // let tipPerPerson = (totalTip/noOfPeople).toFixed(2);
+    // let totalPerPerson = (total / noOfPeople).toFixed(2);
+    // console.log(noOfPeople, totalTip, tip, tipPerPerson, totalPerPerson);
+
+    //4. Step 4. display output values.
+    document.getElementById("tip-amount").textContent = `\$ ${totalTip}`;
+    document.getElementById("total-amount").textContent = `\$ ${total}`;
+    document.getElementById("tip-percent").textContent = `${tipPercent}%`;
+    // document.getElementById("split-num").textContent = noOfPeople; //issue with slider now
+    // document.getElementById("tip-per-person").textContent = `\$ ${tipPerPerson}`;
+    document.getElementById("total-per-person").textContent = `\$ ${totalPerPerson}`;
+
 }
 
-showTipAmount = () => {
-    var x = tipAmount;
-    x.className = 'show'; // this will show initiate the hidden feature and display animation
-    //setTimeout to change className from show, back to what it was
-    setTimeout(function(){x.className = x.className.replace('show', '');}, 3000);
-}
+calculateTip();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
