@@ -7,6 +7,10 @@
 // -When they submit the form, show them the total with tip added.
 // -Display the total tip amount as well so they know how much they're tipping.
 
+
+// NEED TO CHANGE :  #ofGuest field to tip number-- convert that to percentage -- 
+// --showTipAmount is changed to total amount -- and displays tipAmt + mealAmt = total
+
 // get access to 3 input boxes
 
 const amount = document.getElementById('amount');
